@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>backend projects</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link  rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Akaya+Telivigala&family=Poppins:ital,
+                wght@0,200;0,400;0,600;1,200&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+    <section class="header">
+        <nav>
+            <a class="a-logo" href="index.html"><h1>LOGO</h1></a>
+            
+                <div class="nav-links" id="navLinks">
+                    <i class="fa-fa-times" onclick="hideMenu()"></i>
+                    <ul>
+                        <li><a href="index.html">HOME</a></li>
+                        <li><a href="about.html">ABOUT</a></li>
+                        <li><a href="bmi2.html">BMI CALCULATOR</a></li>
+                        
+                        <li><a href="calculator.html">CALCULATOR</a></li>
+                        <li><a href="weathermap.html">WEATHER CONDITION</a></li>
+                    </ul>
+                
+                </div> 
+        </nav>
+	    <div class="container-bmi">
+		    <h1>BMI Calculator</h1>
+
+		    <p>Height (in cm)</p>
+
+		    <input type="text" id="height">
+
+		    <p>Weight (in kg)</p>
+
+		    <input type="text" id="weight">
+
+		    <button id="btn">Calculate</button>
+
+		    <div id="result"></div>
+	    </div>
+        </section>
+         <!--footer-->
+         <section class="footer">
+            <h4>About Us</h4>
+            <p>HI, I'M AMARA
+                I’ve been a passionate advocate for sustainable style since 2015.  I watched the documentary the True Cost and I was forever changed.  I am by no means perfect, but I try my best to live by the values that are
+                 important to me, and that extends itself to my clothes. </p>
+                 <div class="icons">
+                    <i class="fa fa-facebook"></i>
+                    <i class="fa fa-twitter"></i>
+                    <i class="fa fa-instagram"></i>
+                    <i class="fa fa-linkedin"></i>
+                 </div>
+                 <p>Made with<i class="fa fa-heart-o"></i> by Amazinggraceu</p>
+    
+    <script type="text/javascript">
+        window.onload = () => {
+	let button = document.querySelector("#btn");
+
+	// Function for calculating BMI
+	button.addEventListener("click", calculateBMI);
+};
+
+function calculateBMI() {
+
+	/* Getting input from user into height variable.
+	Input is string so typecasting is necessary. */
+	let height = parseInt(document
+			.querySelector("#height").value);
+
+	/* Getting input from user into weight variable.
+	Input is string so typecasting is necessary.*/
+	let weight = parseInt(document
+			.querySelector("#weight").value);
+
+	let result = document.querySelector("#result");
+
+	// Checking the user providing a proper
+	// value or not
+	if (height === "" || isNaN(height))
+		result.innerHTML = "Provide a valid Height!";
+
+	else if (weight === "" || isNaN(weight))
+		result.innerHTML = "Provide a valid Weight!";
+
+	// If both input is valid, calculate the bmi
+	else {
+
+		// Fixing upto 2 decimal places
+		let bmi = (weight / ((height * height)
+							/ 10000)).toFixed(2);
+
+		// Dividing as per the bmi conditions
+		if (bmi < 18.6) result.innerHTML =
+			`Under Weight : <span>${bmi}</span>`;
+
+		else if (bmi >= 18.6 && bmi < 24.9)
+			result.innerHTML =
+				`Normal : <span>${bmi}</span>`;
+
+		else result.innerHTML =
+			`Over Weight : <span>${bmi}</span>`;
+	}
+}
+
+    </script>
+</body>
+
+</html>
